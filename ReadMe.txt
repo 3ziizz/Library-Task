@@ -36,7 +36,7 @@ Notes : you must enter numbers only in that case (Main Page) , if you enter any 
 	b. Enter 2 (If you want  to Add a books):
 		will generate id (greater than graetest id in db) then allow you to enter book details : Title, Author and Description
 		after Enter three above , You should press <Enter> to back to Main Page.
-		note: if you want to genrate unique id according to (year+month+min+sec) comment line 172 and uncomment line 171
+		note: if you want to genrate unique id according to (year+month+min+sec) comment line 170 and uncomment line 169
 
 	c. Enter 3 (If you want  to Edit a books):
 		will show all the books that application read it from dataBase with its id and title,you should enter book's id that wants to edit.

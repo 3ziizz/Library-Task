@@ -5,8 +5,6 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -20,7 +18,7 @@ public class OnicaTask {
 	static String readStringInput = null;
 	static final String invaildinput = "Sorry its an invaild input :(";
 	static String filePath = "test.sql";
-	static int largestId = 0;
+	static int largestId = 1;
 
 	public static void main(String[] args) {
 		try {
@@ -98,7 +96,7 @@ public class OnicaTask {
 		} catch (Exception e) {
 			//			System.out.println("Exception name : " + e.getClass().getName() + ", Exception : " + e);
 			System.err.println("No file name test.sql");
-			System.err.println("genrate new file called");
+			System.err.println("genrate new file called test.sql");
 			File newFile = new File("test.sql");
 			filePath = newFile.toString();
 			//		}myObj
