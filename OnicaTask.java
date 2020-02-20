@@ -68,11 +68,9 @@ public class OnicaTask {
 	private static void loadDate() throws FileNotFoundException {
 		try {
 			String line;
+
 			BufferedReader reader = new BufferedReader(new FileReader(filePath));
-			System.out.println("reader : " + reader);
-			//		if (reader == null) {
-			//			 reader =new BufferedReader(new FileReader("testnn.sql"));
-			//		}
+
 			while ((line = reader.readLine()) != null) {
 				LinkedHashMap<String, String> map = new LinkedHashMap<String, String>();
 				String str[] = line.split("\n");
@@ -128,11 +126,9 @@ public class OnicaTask {
 	}
 
 	private static void save() {
-		//		System.out.println(bookList);
 		String fmap = "";
 
 		for (Map<String, String> map : bookList) {
-			//			System.out.println(map);
 			if (fmap.isEmpty()) {
 				fmap = fmap + map.toString();
 			} else {
@@ -165,11 +161,9 @@ public class OnicaTask {
 		System.out.println(viewBooksPage);
 		viewBooksPage = null;
 		Map<String, String> listBooksToadd = new LinkedHashMap<String, String>();
-		;
-		//		String id = UUID.randomUUID().toString();
-		String id = new SimpleDateFormat("yMds").format(new Date()).toString();
-		//		System.out.println("----------------id :" + id);
-		//		int idInt = Integer.parseInt(id);
+
+		String id = new SimpleDateFormat("yMms").format(new Date()).toString();
+
 		listBooksToadd.put("ID", id);
 
 		viewBooksPage = "\n	Title : ";
@@ -190,16 +184,10 @@ public class OnicaTask {
 
 		waitToEnterInput();
 		viewBooksPage = viewBooksPage + readStringInput;
-		//			System.out.println(viewBooksPage);
 
 		listBooksToadd.put("Description", readStringInput);
 
 		bookList.add(listBooksToadd);
-		//
-		//				i++;
-		//			}
-		//			String viewBooksPage = "\n" + listBooksDetailed(id)
-		//					+ "\nTo view details enter the book ID, to return press <Enter>.";
 
 		System.out.println("Book [" + id + "] Saved,\nTo return press <Enter>.");
 		waitToEnterInput();
@@ -249,7 +237,7 @@ public class OnicaTask {
 							+ bookList.get(i).get("Title") + "\n" + "	Author: " + bookList.get(i).get("Author") + "\n"
 							+ "	Description: " + bookList.get(i).get("Description") + "\n";
 
-					viewBooksPage = viewBooksPage + "[" + bookList.get(i).get("ID") + "]" + bookList.get(i).get("Title")
+					viewBooksPage = viewBooksPage + " [" + bookList.get(i).get("ID") + "] " + bookList.get(i).get("Title")
 							+ "\n";
 				}
 			}
