@@ -48,4 +48,4 @@ Notes : you must enter numbers only in that case (Main Page) , if you enter any 
 		if you entered a wrong title , then you should press enter to return to main page.
 
 	e. Enter 5 (If you want  to save and exit):
-		to write in Db and close the file
+		to write in Db and close the application.
