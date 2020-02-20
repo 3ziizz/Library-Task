@@ -20,6 +20,7 @@ public class OnicaTask {
 	static String readStringInput = null;
 	static final String invaildinput = "Sorry its an invaild input :(";
 	static String filePath = "test.sql";
+	static int largestId = 0;
 
 	public static void main(String[] args) {
 		try {
@@ -85,7 +86,12 @@ public class OnicaTask {
 						System.out.println("ignoring line: " + line);
 					}
 				}
+				//				System.out.println("largestId : " + largestId);
+				//				System.out.println("Integer.parseInt(map.get(ID) : " + Integer.parseInt(map.get("ID")));
 
+				if (Integer.parseInt(map.get("ID")) >= largestId) {
+					largestId = Integer.parseInt(map.get("ID")) + 1;
+				}
 				bookList.add(map);
 
 			}
@@ -162,8 +168,9 @@ public class OnicaTask {
 		viewBooksPage = null;
 		Map<String, String> listBooksToadd = new LinkedHashMap<String, String>();
 
-		String id = new SimpleDateFormat("yMms").format(new Date()).toString();
-
+		//		String id = new SimpleDateFormat("yMms").format(new Date()).toString();
+		String id = Integer.toString(largestId);
+		//		System.out.println("=----------------------id :" + largestId);
 		listBooksToadd.put("ID", id);
 
 		viewBooksPage = "\n	Title : ";
@@ -237,8 +244,8 @@ public class OnicaTask {
 							+ bookList.get(i).get("Title") + "\n" + "	Author: " + bookList.get(i).get("Author") + "\n"
 							+ "	Description: " + bookList.get(i).get("Description") + "\n";
 
-					viewBooksPage = viewBooksPage + " [" + bookList.get(i).get("ID") + "] " + bookList.get(i).get("Title")
-							+ "\n";
+					viewBooksPage = viewBooksPage + " [" + bookList.get(i).get("ID") + "] "
+							+ bookList.get(i).get("Title") + "\n";
 				}
 			}
 			if (!viewBooksPage.isEmpty()) {
