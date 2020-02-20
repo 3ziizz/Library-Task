@@ -22,13 +22,14 @@ public class OnicaTask {
 
 	public static void main(String[] args) {
 		try {
-			loadDate();
-			reloadApp();
+
+			loadDate(); //when start application load data from file called test.sql
+			reloadApp(); // reload app to show main page
 		} catch (Exception e) {
 			System.out.println("Exception name : " + e.getClass().getName() + ", Exception : " + e);
 			System.err.println("No file to load it");
 			//			e.printStackTrace();
-			readStringInput = null;
+			readStringInput = null; //to refuse any input from user if Exception happen 
 		}
 	}
 
@@ -38,22 +39,26 @@ public class OnicaTask {
 
 		try {
 			while (readStringInput != null) {
+				//while user insert input
 				String optionNumber = getOptionNumber();
+				//read input from user through that fn
 				if (!optionNumber.isEmpty()) {
 					if (0 < Integer.parseInt(optionNumber) && Integer.parseInt(optionNumber) < 6) {
-
+						//must insert interger to choose from 1-5
 						if (readStringInput.isEmpty()) {
 							clearScreen();
 							myInput.close();
 						} else {
+							//if insert integer 1-5 only
 							switchBetweenPages(optionNumber);
 						}
 					} else {
+						//if insert integer not from 1 to 5 
 						loadMainPage();
 						waitToEnterInput();
 					}
 				} else {
-
+					//if insert integer <enter>
 					loadMainPage();
 					waitToEnterInput();
 				}
@@ -68,7 +73,7 @@ public class OnicaTask {
 		try {
 			String line;
 
-			BufferedReader reader = new BufferedReader(new FileReader(filePath));
+			BufferedReader reader = new BufferedReader(new FileReader(filePath)); //read from that file that defined above
 
 			while ((line = reader.readLine()) != null) {
 				LinkedHashMap<String, String> map = new LinkedHashMap<String, String>();
@@ -81,6 +86,7 @@ public class OnicaTask {
 						String value = parts[1];
 						map.put(key, value);
 					} else {
+						//if file not formated while while ignore line not formated
 						System.out.println("ignoring line: " + line);
 					}
 				}
@@ -88,12 +94,14 @@ public class OnicaTask {
 				//				System.out.println("Integer.parseInt(map.get(ID) : " + Integer.parseInt(map.get("ID")));
 
 				if (Integer.parseInt(map.get("ID")) >= largestId) {
+					//if add new book that will incerment and will be id for new book
 					largestId = Integer.parseInt(map.get("ID")) + 1;
 				}
 				bookList.add(map);
 
 			}
-		} catch (Exception e) {
+		} catch (Exception e) {//create new file if file dosent exist 
+
 			//			System.out.println("Exception name : " + e.getClass().getName() + ", Exception : " + e);
 			System.err.println("No file name test.sql");
 			System.err.println("genrate new file called test.sql");
@@ -140,6 +148,7 @@ public class OnicaTask {
 			}
 
 		}
+		//convert map to file format
 		String rs = fmap.replace("{", "");
 		rs = rs.replace("}", "");
 		rs = rs.replace("=", ":");
@@ -283,7 +292,7 @@ public class OnicaTask {
 
 	}
 
-	private static void clearScreen() {
+	private static void clearScreen() { //can uncomment that line if you want to clear it with each new page
 		//		System.out.print("\033[H\033[2J");
 	}
 
